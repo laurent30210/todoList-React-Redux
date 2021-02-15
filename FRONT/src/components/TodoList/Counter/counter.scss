@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+.counter {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-20%);
+  right: -5%;
+  font-size: 13rem;
+  color: #fff;
+  font-family: 'Kaushan Script', cursive;
+  z-index: -1;
+}
