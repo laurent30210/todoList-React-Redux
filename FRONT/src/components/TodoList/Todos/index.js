@@ -1,6 +1,6 @@
 // == Import npm
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import Todo from 'src/containers/Todo';
 // == Import
 import './todos.scss';
@@ -21,6 +21,18 @@ const Todos = ({ tasks }) => (
     </ul>
   </div>
 );
-
+Todos.propTypes = {
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]).isRequired,
+      content: PropTypes.string.isRequired,
+      completed: PropTypes.bool.isRequired,
+      isEditing: PropTypes.bool.isRequired,
+    }),
+  ).isRequired,
+};
 // == Export
 export default Todos;

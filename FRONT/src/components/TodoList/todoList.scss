@@ -7,8 +7,6 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   border-right: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: .5em;
-  transition: all .3s ;
-
   &::before {
     position: absolute;
     content: '';
@@ -21,7 +19,8 @@
     border-radius: 50%;
     opacity: .5;
     border-left: 5px solid #fff;
-    transition: all 1s ;
+    animation: zoom 10s  infinite;
+    animation-delay: 5s;
   }   
   &::after {
     position: absolute;
@@ -35,6 +34,18 @@
     border-radius: 50%;
     opacity: .5;
     border-right: 3px solid #fff;
-    transition: all 1s ;
+    animation: zoom 10s infinite;
+
   }  
+}
+@keyframes zoom {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(0.95);
+  }
 }

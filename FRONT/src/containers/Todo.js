@@ -25,18 +25,20 @@ const mapDispatchToProps = (dispatch) => ({
       case 'isEditing':
         dispatch(startEditing(id));
         dispatch(saveTaskId(id));
-        console.log('mode Edition');
+        console.log('mode Edition ON');
         break;
       case 'isRemoving':
         dispatch(removeTodo(id));
         console.log('mode Suppression');
         break;
-      case 'stop':
-        dispatch(stopEditing());
+      case 'stopEditing':
+        dispatch(stopEditing(id));
+        console.log('mode Edition OFF');
+
         break;
       case 'completed':
         dispatch(taskCompleted(id));
-        console.log('mode Completé');
+        console.log('mode tâche Completé');
 
         break;
       default:

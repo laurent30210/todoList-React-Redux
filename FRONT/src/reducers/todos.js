@@ -3,6 +3,7 @@ import {
   HANDLE_VALUE,
   REMOVE_TODO,
   START_EDITING,
+  STOP_EDITING,
   TASK_COMPLETED,
   CHANGE_VALUE_FOR_TASK_EDITING,
 } from 'src/store/actions';
@@ -53,6 +54,19 @@ const reducer = (oldState = initialState, action) => {
             return {
               ...task,
               isEditing: true,
+            };
+          }
+          return task;
+        }),
+      };
+    case STOP_EDITING:
+      return {
+        ...oldState,
+        tasks: oldState.tasks.map((task) => {
+          if (task.id === action.id) {
+            return {
+              ...task,
+              isEditing: false,
             };
           }
           return task;

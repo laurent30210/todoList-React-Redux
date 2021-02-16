@@ -1,6 +1,7 @@
 // == Import npm
 import React from 'react';
 import uniquid from 'uniquid';
+import PropTypes from 'prop-types';
 // == Import
 import './form.scss';
 
@@ -44,6 +45,11 @@ const Form = ({
     </form>
   );
 };
-
+Form.propTypes = {
+  value: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
+  submitForAddTask: PropTypes.func.isRequired,
+  handleError: PropTypes.func.isRequired,
+};
 // == Export
 export default Form;

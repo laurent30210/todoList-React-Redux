@@ -1,6 +1,6 @@
 // == Import npm
 import React from 'react';
-
+import PropTypes from 'prop-types';
 // == Import
 import './counter.scss';
 
@@ -14,6 +14,8 @@ const Counter = ({ tasks }) => {
     </span>
   );
 };
-
+Counter.propTypes = {
+  tasks: PropTypes.array.isRequired,
+};
 // == Export
 export default Counter;
