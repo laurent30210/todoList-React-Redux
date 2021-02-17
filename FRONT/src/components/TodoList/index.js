@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 // == Import npm
 import React from 'react';
 

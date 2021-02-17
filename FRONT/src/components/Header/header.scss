@@ -4,5 +4,28 @@
   top: 0;
   display: flex;
   justify-content: space-between;
-  background-color: #fff;  
+  background-color: #fff;
+  z-index: 10;
+  padding: .5rem;
+  &__item {
+    position: relative;
+    &:after, &:before {
+      position: absolute;
+      content: " ";
+      background-color:#361999;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      transition: width 0.2s;
+    }
+    &:after {
+      left: 0;
+    }
+    &:before {
+      right: 0;
+    }
+    &:hover:before, &:hover:after {
+      width: 50%;
+    } 
+  }  
 }

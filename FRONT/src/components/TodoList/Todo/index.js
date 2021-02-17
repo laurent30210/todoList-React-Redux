@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 // == Import npm
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import Error from 'src/containers/Error';
 import PropTypes from 'prop-types';
 // == Import
 import './todo.scss';
+import colorsRandom from '../../../colors';
 
 // == Composant
 const Todo = ({
@@ -20,29 +21,46 @@ const Todo = ({
   taskId,
   handleError,
 }) => {
+  // install refElement
+  const todoRef = useRef(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    // change background style in current target
+    todoRef.current.style.backgroundColor = !isEditing && !completed ? colorsRandom() : 'rgba(148, 148, 148, 0.8)';
+    // and focus on this item
+    if (isEditing) {
+      inputRef.current.focus();
+    }
+  });
+
   const toggleTodo = (idCurrentTask, name) => {
+    // here, we retrieve, id and name of element for to process the corresponding action
     console.log('action sur la tâche : ', name, idCurrentTask);
     handleTask(name, idCurrentTask);
   };
-
   const submitTaskEdited = (event) => {
     event.preventDefault();
     // check value
     if (/^s*$/.test(valueTask)) {
+      // active error message
       handleError(true);
       setTimeout(() => {
+        // and stop after 2s
         handleError(false);
       }, 2000);
       return;
     }
-    // if ok, let's go to edit
+    // when all it's good, go to edit
     submitForEditTask(taskId, valueTask);
   };
 
   return (
     <>
+      {/** an error? display message */}
       <Error />
       <li
+        ref={todoRef}
         className={completed ? 'todo todo--completed' : 'todo'}
         id={id}
         name="completed"
@@ -57,6 +75,7 @@ const Todo = ({
               onSubmit={submitTaskEdited}
             >
               <input
+                ref={inputRef}
                 className="todo__form__input"
                 type="text"
                 value={valueTask}
@@ -109,6 +128,7 @@ const Todo = ({
     </>
   );
 };
+// PropTypes //
 Todo.propTypes = {
   content: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired,

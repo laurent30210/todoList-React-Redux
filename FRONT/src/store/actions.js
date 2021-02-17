@@ -1,3 +1,5 @@
+// create action creator
+
 // ADD TASKS
 export const ADD_TASK = 'ADD_TASK';
 export const HANDLE_VALUE = 'HANDLE_VALUE';

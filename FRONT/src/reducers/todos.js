@@ -9,9 +9,7 @@ import {
 } from 'src/store/actions';
 
 const initialState = {
-  tasks: [{
-    id: 1, content: 'Hello, à vous de jouer maintenant', completed: true, isEditing: false,
-  }],
+  tasks: [],
   value: '',
 };
 

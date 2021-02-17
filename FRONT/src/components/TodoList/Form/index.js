@@ -14,17 +14,22 @@ const Form = ({
 }) => {
   const submitTask = (event) => {
     event.preventDefault();
+    // check value
     if (/^s*$/.test(value)) {
+      // active error message
       handleError(true);
       setTimeout(() => {
+        // and stop after 2s
         handleError(false);
       }, 2000);
       return;
     }
 
     const task = {
+      // uniquid, package for specify a random number
       id: uniquid(),
       content: value,
+      // we set the boolean to false
       completed: false,
       isEditing: false,
     };
@@ -45,6 +50,7 @@ const Form = ({
     </form>
   );
 };
+// PropTypes //
 Form.propTypes = {
   value: PropTypes.string.isRequired,
   setValue: PropTypes.func.isRequired,

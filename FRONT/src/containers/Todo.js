@@ -15,7 +15,6 @@ import {
 
 const mapStateToProps = (state) => ({
   taskId: state.todoReducer.taskId,
-  error: state.globalReducer.error,
   valueTask: state.todoReducer.value,
 });
 
